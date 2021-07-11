@@ -1,0 +1,113 @@
+class Node:
+  def __init__(self,data):
+    self.data=data
+    self.next=None
+class LinkedList:
+  def __init__(self):
+    self.head=None
+  def create(self,n):
+    if(self.head!=None):
+      print("Already created")
+      return
+    for i in range(n):
+      item=int(input("Enter Information: "))
+      newnode=Node(item)
+      newnode.next=None
+      if(self.head==None):
+             self.head=newnode
+             temp=self.head
+      else:
+        temp.next=newnode
+        temp=newnode
+  def first(self,item):
+    newnode=Node(item)
+    newnode.next=self.head
+    self.head=newnode
+  def last(self,item):
+    if self.head==None:
+        print("Underflow")
+        return
+    temp=self.head
+    while(temp.next!=None):
+          temp=temp.next
+    newnode=Node(item)
+    temp.next=newnode
+    newnode.next=None
+  def countL(self):
+    loc=self.head
+    c=0
+    while(loc!=None):
+      c=c+1
+      loc=loc.next
+    return(c)
+  def delete_first(self):
+    if(self.head==None):
+      print("Unflow")
+      return
+    temp=self.head
+    self.head=self.head.next
+    print("%d data is deleted"%(temp.data))
+  def delete_last(self):
+    if(self.head==None):
+      print("Unflow")
+      return
+    temp=self.head
+    while(temp.next!=None):
+        loc=temp
+        temp=temp.next
+    if temp==self.head:
+       self.head=None
+    else:
+       loc.next=None
+    print("%d data is deleted"%(temp.data))
+  def search(self,key):
+      if self.head==None:
+        print("Underflow")
+        return
+      loc=self.head
+      while(loc!=None):
+        if(key==loc.data):
+             return(1)
+        loc=loc.next
+  def printList(self):
+    loc=self.head
+    while(loc):
+      print(loc.data)
+      loc=loc.next
+if __name__=='__main__':
+    ll=LinkedList()
+    print(" 1. Creating \n 2. Traversal \n 3. Insert First \n 4. Insert Last \n 5. Count \n 6. Delete First \n 7. Delete Last \n 8. Searching an Element \n 0. Exit ")
+    while(True):
+     ch=int(input("Enter your choice: "))
+     if(ch!=0):
+      if ch==1: 
+         n=int(input("Enter the number of nodes: "))
+         ll.create(n)
+      elif ch==2:
+            ll.printList()
+      elif ch==3:
+            item=int(input("Enter the information: "))
+            ll.first(item)
+      elif ch==4:
+            item=int(input("Enter the information: "))
+            ll.last(item)
+      elif ch==5:
+            p=ll.countL()
+            print("The Number of Nodes is: %d"%(p))
+      elif ch==6:
+            ll.delete_first()
+      elif ch==7:
+            ll.delete_last()
+      elif ch==8:
+            key=int(input("Enter the element to be searched: "))
+            k=ll.search(key)
+            if(k!=1):
+              print("Element Not Found")
+            else:
+              print("Element is found ")
+      elif ch==0: 
+            exit()
+
+      else:
+           print("Invalid choice please try again ")
+  

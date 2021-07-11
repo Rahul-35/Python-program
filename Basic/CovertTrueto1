@@ -1,0 +1,3 @@
+x='abc'
+print(int(x=='abc'))
+print(int(x=='xyz'))

@@ -1,0 +1,7 @@
+#Program to return file name and extension
+s= input("Enter a file name: ")
+l=len(s)
+for i in range(l):
+  if(s[i]=='.'):
+    print("File Name: "+s[0:i])
+    print("Extension: "+s[i:l])
